@@ -202,14 +202,15 @@
 
         .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; margin-bottom: 6px; }
 
+        /* ================== ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВСЕХ ЯЗЫКОВ (как у арабского) ================== */
         .hero-title .ar { font-size: 42px; font-weight: 600; color: #fff; text-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 20px rgba(0,0,0,0.6); line-height: 1.1; font-family: 'Space Grotesk', sans-serif; }
-        .hero-title .en { font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        .hero-title .en { font-size: 32px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 20px rgba(0,0,0,0.6); line-height: 1.1; }
 
         .hero-subtitle .ar { font-size: 14px; color: var(--gold-light); margin-top: 4px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); font-weight: 500; letter-spacing: 0.5px; }
-        .hero-subtitle .en { font-size: 11px; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        .hero-subtitle .en { font-size: 16px; color: var(--gold-light); font-weight: 500; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); margin-top: 4px; }
 
         .hero-desc .ar { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
-        .hero-desc .en { font-size: 12px; line-height: 1.6; margin-top: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        .hero-desc .en { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
 
         .hero-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
         .btn-primary {
@@ -230,14 +231,17 @@
             background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(212, 175, 55, 0.06);
             border-radius: 16px; padding: 14px 16px; margin-top: 14px; transition: all var(--transition);
         }
+        /* Обновленные стили для блока Smart Command Center */
         .block-title .ar { font-size: 16px; color: var(--gold-light); text-align: center; font-weight: 600; margin-bottom: 2px; font-family: 'Space Grotesk', sans-serif; }
-        .block-title .en { font-size: 11px; text-align: center; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .block-title .en { font-size: 16px; font-weight: 600; color: var(--gold-light); text-align: center; margin-bottom: 2px; }
+        .scroll-sub .ar { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 6px; }
+        .scroll-sub .en { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 6px; }
 
         .step { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 6px; }
         .step:last-child { margin-bottom: 0; }
         .step-icon { color: var(--gold); font-size: 18px; width: 26px; text-align: center; opacity: 0.7; flex-shrink: 0; margin-top: 1px; }
         .step .ar { font-size: 14px; color: var(--text-secondary); }
-        .step .en { font-size: 11px; }
+        .step .en { font-size: 14px; color: var(--text-secondary); }
 
         .phone-block {
             display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 10px 14px;
@@ -245,7 +249,7 @@
         }
         .phone-block .phone-icon { font-size: 34px; color: var(--text-muted); }
         .phone-block .ar { font-size: 14px; color: var(--text-secondary); }
-        .phone-block .en { font-size: 10px; }
+        .phone-block .en { font-size: 14px; color: var(--text-secondary); }
 
         /* ==================================================
            NUKA AVATAR (Gold Palette)
@@ -277,7 +281,7 @@
 
         .nuka-title { margin-top: 6px; text-align: center; font-size: 12px; letter-spacing: 0.3px; color: var(--text-muted); border-top: 1px solid rgba(212,175,55,0.08); padding-top: 6px; width: 80%; }
         .nuka-title .ar { font-size: 13px; color: var(--gold-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-        .nuka-title .en { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nuka-title .en { font-size: 13px; color: var(--gold-light); font-weight: 600; }
 
         .nuka-legend { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-poster); border: 1px solid var(--gold); border-radius: 20px; padding: 28px 26px; max-width: 340px; width: 90%; z-index: 60; box-shadow: 0 30px 80px rgba(0,0,0,0.8); backdrop-filter: blur(20px); text-align: center; }
         .nuka-legend.active { display: block; }
@@ -287,36 +291,33 @@
 
         .nuka-legend .legend-icon { font-size: 48px; color: var(--gold); opacity: 0.6; margin-bottom: 4px; }
         .nuka-legend .legend-title { font-size: 18px; color: var(--gold-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-        .nuka-legend .legend-title .en { font-size: 13px; display: block; margin-top: 2px; }
+        .nuka-legend .legend-title .en { font-size: 18px; font-weight: 600; display: block; margin-top: 2px; }
         .nuka-legend .legend-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 10px; }
-        .nuka-legend .legend-text .en { font-size: 12px; line-height: 1.6; margin-top: 4px; }
+        .nuka-legend .legend-text .en { font-size: 14px; line-height: 1.6; margin-top: 4px; }
         .nuka-legend .legend-tag { margin-top: 14px; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(212,175,55,0.08); padding-top: 12px; }
-        .nuka-legend .legend-tag .en { font-size: 9px; }
+        .nuka-legend .legend-tag .en { font-size: 11px; }
 
         .legend-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 55; }
         .legend-overlay.active { display: block; }
 
         .scroll-block { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(212, 175, 55, 0.06); border-radius: 16px; padding: 16px; transition: all var(--transition); }
         .scroll-block .block-title .ar { font-size: 17px; }
-        .scroll-block .block-title .en { font-size: 11px; }
-
-        .scroll-sub { text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
-        .scroll-sub .en { font-size: 11px; }
+        .scroll-block .block-title .en { font-size: 17px; }
 
         .rule-main .ar { font-size: 20px; color: var(--gold); text-align: center; font-weight: 600; margin: 6px 0 8px; font-family: 'Space Grotesk', sans-serif; }
-        .rule-main .en { font-size: 13px; text-align: center; margin-bottom: 6px; }
+        .rule-main .en { font-size: 20px; color: var(--gold); text-align: center; font-weight: 600; margin: 6px 0 8px; }
 
         .rule-item { display: flex; gap: 10px; margin-bottom: 7px; align-items: flex-start; }
         .rule-item:last-child { margin-bottom: 0; }
         .rule-item .icon { font-size: 17px; color: var(--gold); opacity: 0.6; width: 24px; flex-shrink: 0; text-align: center; margin-top: 1px; }
         .rule-item .ar { font-size: 13px; color: var(--text-secondary); }
-        .rule-item .en { font-size: 11px; }
+        .rule-item .en { font-size: 13px; color: var(--text-secondary); }
 
         .rewards-deco { text-align: center; margin-top: 10px; font-size: 26px; letter-spacing: 4px; color: var(--gold); opacity: 0.4; }
 
         .seals-banner { text-align: center; padding: 8px 0 6px; border-top: 1px solid rgba(212, 175, 55, 0.08); border-bottom: 1px solid rgba(212, 175, 55, 0.08); margin: 4px 0 8px; }
         .seals-banner .ar { font-size: 18px; color: var(--gold-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-        .seals-banner .en { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .seals-banner .en { font-size: 18px; color: var(--gold-light); font-weight: 600; }
 
         .seals-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
 
@@ -324,10 +325,10 @@
         .seal-card:hover { transform: translateY(-3px); border-color: rgba(212, 175, 55, 0.25); background: rgba(0, 0, 0, 0.7); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.05); }
         .seal-card .seal-icon { font-size: 24px; display: block; margin-bottom: 2px; }
         .seal-card .seal-name .ar { font-size: 12px; font-weight: 600; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; }
-        .seal-card .seal-name .en { font-size: 8px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .seal-card .seal-name .en { font-size: 12px; font-weight: 600; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.3px; }
         .seal-card .seal-benefits { margin-top: 3px; padding-top: 3px; border-top: 1px solid rgba(212, 175, 55, 0.06); }
         .seal-card .benefit .ar { font-size: 9px; color: var(--text-secondary); line-height: 1.2; }
-        .seal-card .benefit .en { font-size: 7px; }
+        .seal-card .benefit .en { font-size: 9px; color: var(--text-secondary); line-height: 1.2; }
         .seal-card .seal-dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.2; margin-top: 2px; }
 
         .video-backdrop .fullscreen-btn { position: absolute; bottom: 14px; right: 16px; z-index: 10; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(212, 175, 55, 0.08); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 16px; cursor: pointer; transition: 0.3s ease; pointer-events: auto; }
@@ -344,9 +345,9 @@
 
         .bottom-block { background: var(--bg-parchment); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; transition: all var(--transition); }
         .bottom-block .bottom-title .ar { font-size: 14px; color: var(--gold-light); font-weight: 600; margin-bottom: 1px; font-family: 'Space Grotesk', sans-serif; }
-        .bottom-block .bottom-title .en { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .bottom-block .bottom-title .en { font-size: 14px; font-weight: 600; color: var(--gold-light); margin-bottom: 1px; }
         .bottom-block .text-ar { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-        .bottom-block .text-en { font-size: 11px; line-height: 1.4; }
+        .bottom-block .text-en { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
         .bottom-block .secondary-video-wrap { border-radius: 12px; overflow: hidden; background: #000; margin: -12px -14px 0; }
         .bottom-block .secondary-video-wrap video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
@@ -356,11 +357,11 @@
         .partner:hover { background: rgba(212, 175, 55, 0.04); }
         .partner i { color: var(--gold); opacity: 0.4; font-size: 16px; display: block; }
         .partner .ar { font-size: 9px; color: var(--text-secondary); margin-top: 1px; }
-        .partner .en { font-size: 7px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+        .partner .en { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
 
         .footer-text { text-align: center; margin-top: 4px; padding-top: 6px; border-top: 1px solid var(--border); }
         .footer-text .ar { font-size: 12px; color: var(--text-secondary); }
-        .footer-text .en { font-size: 10px; color: var(--text-muted); font-style: italic; }
+        .footer-text .en { font-size: 12px; color: var(--text-secondary); font-style: italic; }
 
         .poster-footer { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 20px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); align-items: center; }
 
@@ -370,7 +371,7 @@
 
         .footer-center { text-align: center; font-size: 11px; color: var(--text-muted); }
         .footer-center .ar { font-size: 12px; color: var(--text-secondary); }
-        .footer-center .en { font-size: 10px; }
+        .footer-center .en { font-size: 12px; color: var(--text-secondary); }
 
         .footer-links { display: flex; justify-content: flex-end; gap: 14px; flex-wrap: wrap; font-size: 11px; }
         .footer-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
@@ -389,14 +390,15 @@
         .map-overlay .map-container-full .map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text-muted); }
         .map-overlay .map-container-full .map-placeholder i { font-size: 64px; color: var(--gold); opacity: 0.15; }
         .map-overlay .map-container-full .map-placeholder .ar { font-size: 20px; color: var(--text-secondary); }
-        .map-overlay .map-container-full .map-placeholder .en { font-size: 14px; }
+        .map-overlay .map-container-full .map-placeholder .en { font-size: 20px; color: var(--text-secondary); }
 
         .deco-footer { display: flex; justify-content: center; gap: 14px; margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border); color: var(--gold); opacity: 0.04; font-size: 12px; letter-spacing: 6px; }
 
-        @media (max-width: 1100px) { .seals-row { grid-template-columns: repeat(4, 1fr); } .bottom-row { grid-template-columns: 1fr 1fr; } .hero-title .ar { font-size: 34px; } .video-backdrop { min-height: 400px; } .control-panel { max-width: calc(100% - 100px); } .control-btn.lang-btn { font-size: 9px; padding: 0 6px; height: 24px; } }
+        @media (max-width: 1100px) { .seals-row { grid-template-columns: repeat(4, 1fr); } .bottom-row { grid-template-columns: 1fr 1fr; } .hero-title .en { font-size: 28px; } .video-backdrop { min-height: 400px; } .control-panel { max-width: calc(100% - 100px); } .control-btn.lang-btn { font-size: 9px; padding: 0 6px; height: 24px; } }
         @media (max-width: 768px) {
             .poster { padding: 18px 14px 22px; }
             .hero { grid-template-columns: 1fr; gap: 16px; }
+            .hero-title .en { font-size: 24px; }
             .hero-title .ar { font-size: 28px; }
             .seals-row { grid-template-columns: repeat(2, 1fr); gap: 6px; }
             .video-backdrop { min-height: 300px; margin-top: 48px; }
@@ -420,6 +422,7 @@
         }
         @media (max-width: 480px) {
             .poster { padding: 12px 8px 16px; border-radius: 16px; }
+            .hero-title .en { font-size: 20px; }
             .hero-title .ar { font-size: 24px; }
             .seals-row { grid-template-columns: 1fr 1fr; gap: 5px; }
             .video-backdrop { min-height: 200px; margin-top: 40px; }
@@ -633,8 +636,10 @@
             </div>
         </div>
 
-        <!-- Убираем кнопку полноэкранного режима для картинки -->
-        <!-- <button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen"> ... </button> -->
+        <!-- Кнопка полноэкранного режима для картинки -->
+        <button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen">
+            <i class="fas fa-expand"></i>
+        </button>
     </div>
 
     <!-- ================= НИЖНИЙ БЛОК: ВИДЕО ОСТАЁТСЯ НА МЕСТЕ ================= -->
@@ -660,7 +665,7 @@
                 <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
             </video>
             <div style="padding:8px 12px 10px;background:var(--bg-parchment);text-align:center;">
-                <div class="en" style="font-size:9px;color:var(--text-muted);">Cinematic Drone Fly-through</div>
+                <div class="en" style="font-size:10px;color:var(--text-muted);">Cinematic Drone Fly-through</div>
             </div>
         </div>
 
@@ -754,10 +759,10 @@
     function closeSidebar() { document.getElementById('sidebarMenu').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
 
     document.addEventListener('DOMContentLoaded', function() {
-        const video1 = document.getElementById('secondaryVideo'); // Только нижнее видео
-        if (video1) {
-            video1.addEventListener('play', () => { /* логика приглушения не нужна */ });
-        }
+        document.getElementById('fullscreenBtn').addEventListener('click', function() {
+            if (document.fullscreenElement) document.exitFullscreen();
+            else document.getElementById('videoBackdrop').requestFullscreen();
+        });
 
         const savedLang = localStorage.getItem('langMode') || 'en';
         setLang(savedLang);
