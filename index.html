@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunreef HCCH™ | Cognitive Bridge</title>
+
+    <!-- Google Fonts for Luxury Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- IMPORTANT: Import Maps for React, Three.js, and R3F -->
+    <script type="importmap">
+        {
+            "imports": {
+                "react": "https://esm.sh/react@18.2.0",
+                "react-dom": "https://esm.sh/react-dom@18.2.0",
+                "three": "https://esm.sh/three@0.160.0",
+                "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.15.11",
+                "@react-three/drei": "https://esm.sh/@react-three/drei@9.88.2"
+            }
+        }
+    </script>
+
+    <style>
+        /* --- CSS Design System: Dark Luxury UI --- */
+        :root {
+            --bg-color: #050505;
+            --surface: #0a0a0a;
+            --panel: rgba(18, 18, 18, 0.85);
+            --carbon: #1a1a1a;
+            --blue-glow: #00d4ff;
+            --amber-glow: #ffaa00;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3 { font-weight: 300; letter-spacing: -0.02em; }
+        .glow-text { text-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+        .subtitle { color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* Main Container */
+        #app {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Hero Overlay UI */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5vw;
+            z-index: 10;
+        }
+        .hero-content { pointer-events: auto; max-width: 600px; }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons (Glassmorphism) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            background: var(--panel);
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        .btn-primary {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+        .btn-primary:hover {
+            background: var(--blue-glow);
+            color: var(--bg-color);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-glass:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Floating UI Widgets over 3D scene */
+        .ui-widget {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            background: var(--panel);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        /* Top Right: AI Copilot Chat */
+        .ai-copilot {
+            top: 40px; right: 40px;
+            width: 320px;
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .ai-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 10px;
+            font-size: 0.8rem;
+            color: var(--blue-glow);
+        }
+        .ai-messages {
+            height: 120px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-right: 5px;
+        }
+        .ai-messages div { margin-bottom: 8px; }
+        .ai-messages .user { color: #fff; text-align: right; }
+        .ai-messages .bot { color: var(--blue-glow); }
+        .ai-input-group {
+            display: flex;
+            gap: 8px;
+        }
+        .ai-input {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            padding: 10px;
+            color: #fff;
+            outline: none;
+            font-family: var(--font-main);
+        }
+        .ai-input:focus { border-color: var(--blue-glow); }
+        .ai-send {
+            background: var(--blue-glow);
+            border: none;
+            border-radius: 8px;
+            padding: 0 16px;
+            color: #000;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Bottom Left: Dashboard KPI */
+        .kpi-dashboard {
+            bottom: 40px; left: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 16px;
+            width: auto;
+        }
+        .kpi-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .kpi-value { font-size: 1.5rem; font-weight: 300; color: var(--blue-glow); }
+        .kpi-label { font-size: 0.65rem; text-transform: uppercase; color: var(--text-secondary); margin-top: 4px; letter-spacing: 0.1em;}
+
+        /* Scrollable Sections Below Fold */
+        .scroll-content {
+            position: relative;
+            z-index: 20;
+            background: var(--bg-color);
+            padding: 80px 5vw;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--blue-glow);
+            padding-left: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+        .feature-card {
+            background: var(--carbon);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--blue-glow);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
+        }
+        .feature-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+        .feature-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Language Selector */
+        .lang-selector {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .lang-btn {
+            padding: 8px 12px;
+            background: transparent;
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            border-color: var(--blue-glow);
+            color: #fff;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content { max-width: 100%; text-align: center; }
+            .hero-actions { justify-content: center; }
+            .ai-copilot { display: none; } /* Hide chat on mobile */
+            .kpi-dashboard { grid-template-columns: 1fr 1fr; bottom: 20px; left: 20px; right: 20px; width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- REACT 3D HELM WILL RENDER HERE -->
+        <div id="three-root"></div>
+
+        <!-- HERO OVERLAY -->
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <span class="subtitle glow-text">Sunreef HCCH™ Powered by Tersanesi</span>
+                <h1 class="hero-title">The Cognitive<br>Bridge of Tomorrow</h1>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="alert('Loading 3D Explorer...')">Explore Experience</button>
+                    <button class="btn btn-glass" onclick="alert('Loading Interactive Demo...')">Interactive Demo</button>
+                    <button class="btn btn-glass" onclick="alert('Requesting Presentation...')">Request Presentation</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI COPILOT WIDGET -->
+        <div class="ui-widget ai-copilot">
+            <div class="ai-header">
+                <span>🤖 AI Copilot Active</span>
+                <span style="font-size: 10px; background: rgba(0,255,0,0.1); padding: 2px 8px; border-radius: 12px; color: #0f0;">Online</span>
+            </div>
+            <div class="ai-messages" id="chat-window">
+                <div class="bot">Hello. I am your AI helm assistant. Ask me anything about the vessel.</div>
+            </div>
+            <div class="ai-input-group">
+                <input type="text" class="ai-input" id="ai-input" placeholder="Try 'Show battery system'..." />
+                <button class="ai-send" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- PERFORMANCE DASHBOARD KPI -->
+        <div class="ui-widget kpi-dashboard">
+            <div class="kpi-item">
+                <span class="kpi-value">92%</span>
+                <span class="kpi-label">Battery</span>
+            </div>
+            <div class="kpi-item">
+                <span class="kpi-value" style="color: var(--amber-glow);">14.2 kW</span>
+                <span class="kpi-label">Solar In</span>
+            </div>
+            <div class="kpi-item">
+                <span class="kpi-value">24.0<span style="font-size:0.8rem;">kn</span></span>
+                <span class="kpi-label">Speed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCROLLABLE CONTENT (Features & Languages) -->
+    <div class="scroll-content">
+        <h2 class="section-title">Intelligent Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card"><h3>AI Navigation</h3><p>Real-time route optimization and hazard detection.</p></div>
+            <div class="feature-card"><h3>Digital Radar</h3><p>Fusion of LIDAR and traditional radar for 360° awareness.</p></div>
+            <div class="feature-card"><h3>Energy Management</h3><p>Predictive balancing of solar, battery, and propulsion.</p></div>
+            <div class="feature-card"><h3>Digital Twin</h3><p>Live monitoring of every system and structural component.</p></div>
+        </div>
+
+        <h2 class="section-title">Multilingual Interface</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">AI translates voice, text, documentation, and commands instantly.</p>
+        <div class="lang-selector">
+            <button class="lang-btn active">🇬🇧 EN</button>
+            <button class="lang-btn">🇫🇷 FR</button>
+            <button class="lang-btn">🇮🇹 IT</button>
+            <button class="lang-btn">🇪🇸 ES</button>
+            <button class="lang-btn">🇩🇪 DE</button>
+            <button class="lang-btn">🇨🇳 中文</button>
+            <button class="lang-btn">🇸🇦 العربية</button>
+        </div>
+    </div>
+
+    <!-- REACT SCRIPT: 3D HELM WITH THREE.JS -->
+    <script type="module">
+        import React, { useState, useRef } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        import { Canvas } from 'https://esm.sh/@react-three/fiber@8.15.11';
+        import { Environment, OrbitControls, ContactShadows, Float } from 'https://esm.sh/@react-three/drei@9.88.2';
+        import * as THREE from 'https://esm.sh/three@0.160.0';
+
+        // --- 3D Helm Component ---
+        function Helm() {
+            return (
+                <group position={[0, -0.5, 0]}>
+                    {/* Holographic Base Platform */}
+                    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.8, 0]}>
+                        <ringGeometry args={[2.5, 3, 64]} />
+                        <meshBasicMaterial color="#00d4ff" transparent opacity={0.15} side={THREE.DoubleSide} />
+                    </mesh>
+                    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.75, 0]}>
+                        <ringGeometry args={[2.6, 2.9, 64]} />
+                        <meshBasicMaterial color="#00d4ff" transparent opacity={0.05} />
+                    </mesh>
+
+                    {/* Floating 'Glow' Rings */}
+                    {[0, 1, 2].map((i) => (
+                        <Float key={i} speed={1} rotationIntensity={0.2} floatIntensity={0.5}>
+                            <mesh rotation={[-Math.PI / 2, 0, i * 1.5]} position={[0, i * 0.4 - 0.6, 0]}>
+                                <torusGeometry args={[1.8 - i*0.2, 0.02, 16, 100]} />
+                                <meshBasicMaterial color={i % 2 === 0 ? "#00d4ff" : "#ffaa00"} transparent opacity={0.3} />
+                            </mesh>
+                        </Float>
+                    ))}
+
+                    {/* Main Dash Panel (Simplified) */}
+                    <mesh position={[0, 0.2, -0.5]} castShadow>
+                        <boxGeometry args={[4, 0.5, 0.2]} />
+                        <meshStandardMaterial color="#111" roughness={0.8} metalness={0.2} />
+                    </mesh>
+
+                    {/* Screens (Holographic Glow) */}
+                    <mesh position={[-1.5, 0.2, -0.4]}>
+                        <boxGeometry args={[1.5, 0.3, 0.02]} />
+                        <meshBasicMaterial color="#00d4ff" transparent opacity={0.2} />
+                    </mesh>
+                    <mesh position={[0, 0.2, -0.4]}>
+                        <boxGeometry args={[1.5, 0.3, 0.02]} />
+                        <meshBasicMaterial color="#00d4ff" transparent opacity={0.2} />
+                    </mesh>
+                    <mesh position={[1.5, 0.2, -0.4]}>
+                        <boxGeometry args={[1.5, 0.3, 0.02]} />
+                        <meshBasicMaterial color="#00d4ff" transparent opacity={0.2} />
+                    </mesh>
+
+                    {/* Steering Wheel Base */}
+                    <group position={[0, 0.1, 0]}>
+                        <mesh>
+                            <cylinderGeometry args={[0.05, 0.05, 0.2]} />
+                            <meshStandardMaterial color="#333" metalness={0.8} roughness={0.2} />
+                        </mesh>
+                        {/* Steering Ring */}
+                        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+                            <torusGeometry args={[0.3, 0.03, 8, 32]} />
+                            <meshStandardMaterial color="#222" metalness={0.9} roughness={0.1} />
+                        </mesh>
+                        {/* Center Logo glow */}
+                        <mesh position={[0, 0, 0]}>
+                            <circleGeometry args={[0.05, 16]} />
+                            <meshBasicMaterial color="#00d4ff" />
+                        </mesh>
+                    </group>
+                </group>
+            );
+        }
+
+        // --- Main 3D Scene ---
+        function Scene() {
+            return (
+                <div style={{ width: '100vw', height: '100vh', background: '#050505' }}>
+                    <Canvas shadows camera={{ position: [0, 1, 4], fov: 50 }}>
+                        <ambientLight intensity={0.5} />
+                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+                        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+                        
+                        <Helm />
+                        
+                        {/* Environment for reflections */}
+                        <Environment preset="city" />
+                        
+                        {/* Controls to rotate the helm */}
+                        <OrbitControls 
+                            enableZoom={true} 
+                            enablePan={false} 
+                            minPolarAngle={0} 
+                            maxPolarAngle={Math.PI / 2.2} 
+                            autoRotate={true}
+                            autoRotateSpeed={1.5}
+                        />
+                        
+                        {/* Soft Shadows */}
+                        <ContactShadows position={[0, -0.9, 0]} opacity={0.4} scale={10} blur={2.5} far={4} color="#000" />
+                    </Canvas>
+                </div>
+            );
+        }
+
+        // --- Render React into DOM ---
+        const root = createRoot(document.getElementById('three-root'));
+        root.render(<Scene />);
+
+        // --- AI Copilot Logic ---
+        window.sendMessage = function() {
+            const input = document.getElementById('ai-input');
+            const chat = document.getElementById('chat-window');
+            const msg = input.value.trim();
+            
+            if (!msg) return;
+            
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'user';
+            userDiv.textContent = msg;
+            chat.appendChild(userDiv);
+            
+            // Clear input
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+
+            // Simulate AI Response (Function Calling Context)
+            setTimeout(() => {
+                let response = "Analyzing system data...";
+                if (msg.toLowerCase().includes('battery')) response = "✅ Battery systems are nominal at 92%. Charging from solar array is active.";
+                else if (msg.toLowerCase().includes('docking')) response = "🔄 Switching to Docking Mode. Engaging thrusters and proximity sensors.";
+                else if (msg.toLowerCase().includes('weather')) response = "🌤️ Tomorrow's forecast: Clear skies, wind 12 knots from the East.";
+                else if (msg.toLowerCase().includes('monaco')) response = "🗺️ Route to Monaco calculated. 18.4 nautical miles. ETA 45 minutes.";
+                else response = "🤖 I've highlighted the relevant controls on the 3D dashboard for you.";
+
+                const botDiv = document.createElement('div');
+                botDiv.className = 'bot';
+                botDiv.textContent = response;
+                chat.appendChild(botDiv);
+                chat.scrollTop = chat.scrollHeight;
+            }, 800);
+        };
+
+        // Enter key support
+        document.getElementById('ai-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Language Toggle Simulation
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                alert(`UI language switched to ${this.textContent.trim()}. AI voice synthesis will now use this locale.`);
+            });
+        });
+    </script>
+</body>
+</html>
