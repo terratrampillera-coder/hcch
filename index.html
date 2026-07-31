@@ -148,11 +148,6 @@
         .control-btn.lang-btn { font-size: 10px; padding: 0 4px; width: auto; border-radius: 20px; padding: 0 10px; height: 28px; font-weight: 500; }
         .control-btn.lang-btn.active { background: rgba(0, 212, 255, 0.15); color: var(--blue); }
 
-        /* ===== STYLE FOR SUNREEF RADIO BUTTON ===== */
-        .control-btn.radio-btn.active { color: var(--amber); background: rgba(255, 170, 0, 0.12); animation: radio-pulse 1.5s ease-in-out infinite; }
-        @keyframes radio-pulse { 0%, 100% { box-shadow: 0 0 5px rgba(255, 170, 0, 0.1); } 50% { box-shadow: 0 0 20px rgba(255, 170, 0, 0.2); } }
-        
-        /* Custom shape for the Radio button */
         .control-btn.radio-custom {
             width: auto;
             min-width: 80px;
@@ -169,6 +164,7 @@
         .control-btn.radio-custom i { font-size: 12px; }
         .control-btn.radio-custom:hover { border-color: var(--amber); color: var(--amber); }
         .control-btn.radio-custom.active { color: var(--amber); border-color: var(--amber); background: rgba(255, 170, 0, 0.08); animation: radio-pulse 1.5s ease-in-out infinite; }
+        @keyframes radio-pulse { 0%, 100% { box-shadow: 0 0 5px rgba(255, 170, 0, 0.1); } 50% { box-shadow: 0 0 20px rgba(255, 170, 0, 0.2); } }
 
         .ar { font-family: 'Space Grotesk', sans-serif; direction: rtl; }
         .en { font-family: 'Inter', sans-serif; direction: ltr; color: var(--text-english); font-size: 0.72em; font-weight: 400; opacity: 0.9; margin-top: 1px; }
@@ -246,41 +242,49 @@
         .phone-block .ar { font-size: 14px; color: var(--text-secondary); }
         .phone-block .en { font-size: 10px; }
 
-        .avatar-ai {
+        /* ==================================================
+           NUKA AVATAR (Changed from Robot to Female Glyph)
+           ================================================== */
+        .avatar-nuka {
             display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; cursor: pointer; transition: 0.3s ease; user-select: none;
         }
-        .avatar-ai:hover { transform: scale(1.04); }
+        .avatar-nuka:hover { transform: scale(1.04); }
 
-        .ai-silhouette {
+        .nuka-silhouette {
             position: relative; width: 110px; height: 110px; display: flex; align-items: center; justify-content: center;
             border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(0,212,255,0.12), transparent 70%);
             border: 1.5px solid rgba(0,212,255,0.2); box-shadow: 0 0 40px rgba(0,212,255,0.06), inset 0 0 40px rgba(0,212,255,0.03); transition: 0.4s ease;
         }
-        .avatar-ai:hover .ai-silhouette { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 60px rgba(0,212,255,0.12), inset 0 0 60px rgba(0,212,255,0.05); }
+        .avatar-nuka:hover .nuka-silhouette { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 60px rgba(0,212,255,0.12), inset 0 0 60px rgba(0,212,255,0.05); }
 
-        .ai-icon-face { font-size: 72px; line-height: 1; color: var(--blue); opacity: 0.7; filter: drop-shadow(0 0 20px rgba(0,212,255,0.12)); transition: 0.4s ease; }
-        .avatar-ai:hover .ai-icon-face { opacity: 1; filter: drop-shadow(0 0 30px rgba(0,212,255,0.25)); }
+        /* Ancient Egyptian feminine hieroglyph 𓁐 representing Nuka, the AI guide */
+        .nuka-face { 
+            font-size: 72px; line-height: 1; color: var(--blue); opacity: 0.8; 
+            filter: drop-shadow(0 0 20px rgba(0,212,255,0.15)); transition: 0.4s ease; 
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .avatar-nuka:hover .nuka-face { opacity: 1; filter: drop-shadow(0 0 30px rgba(0,212,255,0.25)); }
 
-        .ai-glow { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.2), transparent 70%); filter: blur(8px); animation: glowPulse 3s ease-in-out infinite; }
+        .nuka-glow { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.2), transparent 70%); filter: blur(8px); animation: glowPulse 3s ease-in-out infinite; }
         @keyframes glowPulse { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.4); } }
 
-        .ai-title { margin-top: 6px; text-align: center; font-size: 12px; letter-spacing: 0.3px; color: var(--text-muted); border-top: 1px solid rgba(0,212,255,0.08); padding-top: 6px; width: 80%; }
-        .ai-title .ar { font-size: 13px; color: var(--blue-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-        .ai-title .en { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nuka-title { margin-top: 6px; text-align: center; font-size: 12px; letter-spacing: 0.3px; color: var(--text-muted); border-top: 1px solid rgba(0,212,255,0.08); padding-top: 6px; width: 80%; }
+        .nuka-title .ar { font-size: 13px; color: var(--blue-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+        .nuka-title .en { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .ai-legend { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-poster); border: 1px solid var(--blue); border-radius: 20px; padding: 28px 26px; max-width: 340px; width: 90%; z-index: 60; box-shadow: 0 30px 80px rgba(0,0,0,0.8); backdrop-filter: blur(20px); text-align: center; }
-        .ai-legend.active { display: block; }
+        .nuka-legend { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-poster); border: 1px solid var(--blue); border-radius: 20px; padding: 28px 26px; max-width: 340px; width: 90%; z-index: 60; box-shadow: 0 30px 80px rgba(0,0,0,0.8); backdrop-filter: blur(20px); text-align: center; }
+        .nuka-legend.active { display: block; }
 
-        .ai-legend .legend-close { position: absolute; top: 8px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; transition: 0.3s; }
-        .ai-legend .legend-close:hover { color: var(--blue); transform: rotate(90deg); }
+        .nuka-legend .legend-close { position: absolute; top: 8px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 22px; cursor: pointer; transition: 0.3s; }
+        .nuka-legend .legend-close:hover { color: var(--blue); transform: rotate(90deg); }
 
-        .ai-legend .legend-icon { font-size: 48px; color: var(--blue); opacity: 0.6; margin-bottom: 4px; }
-        .ai-legend .legend-title { font-size: 18px; color: var(--blue-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-        .ai-legend .legend-title .en { font-size: 13px; display: block; margin-top: 2px; }
-        .ai-legend .legend-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 10px; }
-        .ai-legend .legend-text .en { font-size: 12px; line-height: 1.6; margin-top: 4px; }
-        .ai-legend .legend-tag { margin-top: 14px; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(0,212,255,0.08); padding-top: 12px; }
-        .ai-legend .legend-tag .en { font-size: 9px; }
+        .nuka-legend .legend-icon { font-size: 48px; color: var(--blue); opacity: 0.6; margin-bottom: 4px; }
+        .nuka-legend .legend-title { font-size: 18px; color: var(--blue-light); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+        .nuka-legend .legend-title .en { font-size: 13px; display: block; margin-top: 2px; }
+        .nuka-legend .legend-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 10px; }
+        .nuka-legend .legend-text .en { font-size: 12px; line-height: 1.6; margin-top: 4px; }
+        .nuka-legend .legend-tag { margin-top: 14px; font-size: 11px; color: var(--text-muted); border-top: 1px solid rgba(0,212,255,0.08); padding-top: 12px; }
+        .nuka-legend .legend-tag .en { font-size: 9px; }
 
         .legend-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 55; }
         .legend-overlay.active { display: block; }
@@ -392,9 +396,9 @@
             .video-content { padding: 14px 12px 16px; }
             .seal-card .seal-icon { font-size: 20px; }
             .bottom-row { grid-template-columns: 1fr; gap: 10px; }
-            .ai-silhouette { width: 80px; height: 80px; }
-            .ai-icon-face { font-size: 54px; }
-            .ai-legend { max-width: 280px; padding: 22px 18px; }
+            .nuka-silhouette { width: 80px; height: 80px; }
+            .nuka-face { font-size: 54px; }
+            .nuka-legend { max-width: 280px; padding: 22px 18px; }
             .control-panel { top: 10px; left: 10px; padding: 4px 5px; flex-wrap: wrap; gap: 3px; border-radius: 30px; max-width: calc(100% - 80px); }
             .control-btn { width: 30px; height: 30px; font-size: 11px; }
             .control-btn.lang-btn { font-size: 8px; padding: 0 5px; height: 22px; }
@@ -412,8 +416,8 @@
             .seals-row { grid-template-columns: 1fr 1fr; gap: 5px; }
             .video-backdrop { min-height: 200px; margin-top: 40px; }
             .seal-card .seal-icon { font-size: 18px; }
-            .ai-silhouette { width: 64px; height: 64px; }
-            .ai-icon-face { font-size: 42px; }
+            .nuka-silhouette { width: 64px; height: 64px; }
+            .nuka-face { font-size: 42px; }
             .control-panel { top: 8px; left: 8px; padding: 3px 4px; gap: 2px; border-radius: 24px; max-width: calc(100% - 70px); }
             .control-btn { width: 26px; height: 26px; font-size: 10px; }
             .control-btn.lang-btn { font-size: 7px; padding: 0 4px; height: 20px; }
@@ -492,11 +496,9 @@
             <button class="control-btn" id="btn-home" title="Home"><i class="fas fa-home"></i></button>
             <button class="control-btn" id="btn-map-open" title="Route Map" onclick="openMap()"><i class="fas fa-map"></i></button>
             <button class="control-btn" id="btn-seals" title="Features"><i class="fas fa-microchip"></i></button>
-            <!-- =========== CHANGED HERE =========== -->
             <button class="control-btn radio-custom" id="btn-radio" title="Sunreef Radio">
                 <i class="fas fa-radio"></i> Sunreef Radio
             </button>
-            <!-- ==================================== -->
         </div>
 
         <div class="theme-group">
@@ -535,14 +537,15 @@
                 </div>
 
                 <div class="right-col">
-                    <div class="avatar-ai" id="aiAvatar">
-                        <div class="ai-silhouette">
-                            <div class="ai-icon-face"><i class="fas fa-robot"></i></div>
-                            <div class="ai-glow"></div>
+                    <!-- ================= UPDATED NUKA AVATAR ================= -->
+                    <div class="avatar-nuka" id="nukaAvatar">
+                        <div class="nuka-silhouette">
+                            <div class="nuka-face">𓁐</div>
+                            <div class="nuka-glow"></div>
                         </div>
-                        <div class="ai-title">
-                            <span class="ar">مساعد الذكاء الاصطناعي</span>
-                            <span class="en">AI Copilot</span>
+                        <div class="nuka-title">
+                            <span class="ar">نوكا · مساعدة Tersanesi</span>
+                            <span class="en">Nuka · Tersanesi Assistant</span>
                         </div>
                     </div>
 
@@ -687,10 +690,12 @@
     <div class="deco-footer"><span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
 
     <div class="legend-overlay" id="legendOverlay"></div>
-    <div class="ai-legend" id="aiLegend">
+    
+    <!-- ================= UPDATED NUKA LEGEND ================= -->
+    <div class="nuka-legend" id="nukaLegend">
         <button class="legend-close" id="legendClose"><i class="fas fa-times"></i></button>
-        <div class="legend-icon"><i class="fas fa-robot"></i></div>
-        <div class="legend-title">Tersanesi AI<span class="en">Copilot Assistant</span></div>
+        <div class="legend-icon">𓁐</div>
+        <div class="legend-title">Nuka<span class="en"> · Tersanesi Assistant</span></div>
         <div class="legend-text">
             <span class="ar">
                 مساعد ذكي يتحكم في كامل نظام السفينة. يفهم الأوامر الصوتية، يحلل البيانات، ويوفر تجربة ملاحية آمنة ومتطورة.
@@ -699,7 +704,10 @@
                 An intelligent copilot that controls the entire vessel. Understands voice commands, analyzes data, and ensures safe, advanced navigation.
             </span>
         </div>
-        <div class="legend-tag"><span class="en">✦ Powered by Tersanesi Runtime ✦</span></div>
+        <div class="legend-tag">
+            <span class="ar">✦ مشغّل بواسطة Tersanesi Runtime و Copilot ✦</span>
+            <span class="en">✦ Powered by Tersanesi Runtime with Copilot ✦</span>
+        </div>
     </div>
 </div>
 
@@ -758,22 +766,23 @@
         document.getElementById('mapClose').addEventListener('click', closeMap);
         document.getElementById('mapOverlay').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeMap(); });
 
-        const aiAvatar = document.getElementById('aiAvatar');
-        const aiLegend = document.getElementById('aiLegend');
+        // ============= NUKA AVATAR & LEGEND INTERACTION =============
+        const nukaAvatar = document.getElementById('nukaAvatar');
+        const nukaLegend = document.getElementById('nukaLegend');
         const legendOverlay = document.getElementById('legendOverlay');
         const legendClose = document.getElementById('legendClose');
 
-        aiAvatar.addEventListener('click', () => {
-            aiLegend.classList.add('active'); legendOverlay.classList.add('active'); document.body.style.overflow = 'hidden';
+        nukaAvatar.addEventListener('click', () => {
+            nukaLegend.classList.add('active'); legendOverlay.classList.add('active'); document.body.style.overflow = 'hidden';
         });
         legendClose.addEventListener('click', () => {
-            aiLegend.classList.remove('active'); legendOverlay.classList.remove('active'); document.body.style.overflow = '';
+            nukaLegend.classList.remove('active'); legendOverlay.classList.remove('active'); document.body.style.overflow = '';
         });
         legendOverlay.addEventListener('click', () => {
-            aiLegend.classList.remove('active'); legendOverlay.classList.remove('active'); document.body.style.overflow = '';
+            nukaLegend.classList.remove('active'); legendOverlay.classList.remove('active'); document.body.style.overflow = '';
         });
+        // ===========================================================
 
-        // Radio button logic
         const radioBtn = document.getElementById('btn-radio');
         let radioActive = false;
         radioBtn.addEventListener('click', function() {
@@ -784,6 +793,7 @@
 
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeMap(); closeSidebar(); } });
         console.log('⚓ Sunreef HCCH™ · Powered by Tersanesi loaded!');
+        console.log('👩‍💻 Meet Nuka, your Tersanesi Assistant!');
     });
 </script>
 
