@@ -183,9 +183,15 @@
             min-height: 580px; display: flex; align-items: center; justify-content: center;
         }
 
-        .video-backdrop video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-            display: block; background: #0a0805; z-index: 0;
+        .video-backdrop img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            z-index: 0;
         }
 
         .video-backdrop .video-overlay-dark {
@@ -333,7 +339,7 @@
         .video-backdrop .fullscreen-btn:hover { background: rgba(212, 175, 55, 0.15); color: var(--gold); border-color: rgba(212, 175, 55, 0.15); }
 
         .video-backdrop:fullscreen { min-height: 100vh; margin: 0; border-radius: 0; border: none; }
-        .video-backdrop:fullscreen video { object-fit: contain; }
+        .video-backdrop:fullscreen img { object-fit: contain; }
         .video-backdrop:fullscreen .video-overlay-dark { background: rgba(0, 0, 0, 0.6); }
         .video-backdrop:fullscreen .video-content { padding: 30px 40px; }
         .video-backdrop:fullscreen .seals-row { grid-template-columns: repeat(7, 1fr); }
@@ -518,11 +524,8 @@
 
     <div class="video-backdrop" id="videoBackdrop">
         
-        <!-- ============== MAIN VIDEO (Sunreef 100 Sail Catamaran) ============== -->
-        <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
-            <source src="https://sunreef-yachts.com/wp-content/uploads/2023/06/Sunreef-100-Sail-The-Avant-Garde.mp4" type="video/mp4" />
-            Ваш браузер не поддерживает видео.
-        </video>
+        <!-- ============== HERO IMAGE (yacht-hero.jpg) ============== -->
+        <img src="https://raw.githubusercontent.com/terratrampillera-coder/hcch/main/images/hero/yacht-hero.jpg" alt="Sunreef Yacht Hero" />
         
         <div class="video-overlay-dark"></div>
 
@@ -658,6 +661,12 @@
             </div>
         </div>
         <div class="bottom-block" style="padding:0;overflow:hidden;border-radius:14px;">
+            
+            <!-- ============== SECONDARY VIDEO (Bahamas / BVI) ============== -->
+            <video id="secondaryVideo" autoplay muted loop playsinline preload="metadata" style="width:100%;display:block;background:#0a0805;aspect-ratio:16/9;object-fit:cover;">
+                <source src="https://sunreef-yachts.com/wp-content/uploads/2023/06/Sunreef-100-Sail-The-Avant-Garde.mp4" type="video/mp4" />
+            </video>
+            
             <div style="padding:8px 12px 10px;background:var(--bg-parchment);text-align:center;">
                 <div class="en" style="font-size:9px;color:var(--text-muted);">Cinematic Drone Fly-through</div>
             </div>
@@ -758,8 +767,8 @@
             else document.getElementById('videoBackdrop').requestFullscreen();
         });
 
-        // Only one video logic now
-        const video1 = document.getElementById('mainVideo');
+        // Secondary video only
+        const video2 = document.getElementById('secondaryVideo');
 
         const savedLang = localStorage.getItem('langMode') || 'en';
         setLang(savedLang);
