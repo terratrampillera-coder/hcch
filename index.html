@@ -517,13 +517,10 @@
     </div>
 
     <div class="video-backdrop" id="videoBackdrop">
-        
-        <!-- ============== MAIN VIDEO (Autoplay, Muted, Loop) ============== -->
-        <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
-            <source src="https://sunreef-yachts.com/wp-content/uploads/2023/06/Sunreef-100-Sail-The-Avant-Garde.mp4" type="video/mp4" />
-            Ваш браузер не поддерживает видео.
+        <video id="mainVideo" controls playsinline preload="metadata">
+            <!-- 🚤 Официальная демонстрация Sunreef 100 Sail Catamaran -->
+            <source src="https://sunreef-yachts.com/en/news/the-avant-garde-sunreef-100-sail-catamaran/" type="video/mp4" />
         </video>
-        
         <div class="video-overlay-dark"></div>
 
         <div class="video-content">
@@ -549,7 +546,6 @@
                 </div>
 
                 <div class="right-col">
-                    <!-- ================= UPDATED NUKA AVATAR ================= -->
                     <div class="avatar-nuka" id="nukaAvatar">
                         <div class="nuka-silhouette">
                             <div class="nuka-face"><i class="fas fa-user-circle"></i></div>
@@ -658,14 +654,12 @@
             </div>
         </div>
         <div class="bottom-block" style="padding:0;overflow:hidden;border-radius:14px;">
-            
-            <!-- ============== SECONDARY VIDEO (Autoplay, Muted, Loop) ============== -->
-            <video id="secondaryVideo" autoplay muted loop playsinline preload="metadata" style="width:100%;display:block;background:#0a0805;aspect-ratio:16/9;object-fit:cover;">
+            <video id="secondaryVideo" controls playsinline preload="metadata" style="width:100%;display:block;background:#0a0805;aspect-ratio:16/9;object-fit:cover;">
+                <!-- 🏝️ Чартер Sunreef 60 Power Eco "Double Happiness" по Багамам и BVI -->
                 <source src="https://www.youtube.com/watch?v=szbn0cbrV4k" type="video/mp4" />
             </video>
-            
             <div style="padding:8px 12px 10px;background:var(--bg-parchment);text-align:center;">
-                <div class="en" style="font-size:9px;color:var(--text-muted);">Cinematic Drone Fly-through</div>
+                <div class="en" style="font-size:9px;color:var(--text-muted);">🏝️ Double Happiness · Bahamas & BVI Charter</div>
             </div>
         </div>
         <div class="bottom-block">
@@ -706,7 +700,6 @@
 
     <div class="legend-overlay" id="legendOverlay"></div>
     
-    <!-- ================= UPDATED NUKA LEGEND ================= -->
     <div class="nuka-legend" id="nukaLegend">
         <button class="legend-close" id="legendClose"><i class="fas fa-times"></i></button>
         <div class="legend-icon"><i class="fas fa-user-circle"></i></div>
@@ -766,8 +759,6 @@
 
         const video1 = document.getElementById('mainVideo');
         const video2 = document.getElementById('secondaryVideo');
-        
-        // Asynchronous video logic (pausing the other when one is played manually)
         video1.addEventListener('play', () => { if (!video2.paused) video2.pause(); });
         video2.addEventListener('play', () => { if (!video1.paused) video1.pause(); });
 
@@ -783,7 +774,6 @@
         document.getElementById('mapClose').addEventListener('click', closeMap);
         document.getElementById('mapOverlay').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeMap(); });
 
-        // ============= NUKA AVATAR & LEGEND INTERACTION =============
         const nukaAvatar = document.getElementById('nukaAvatar');
         const nukaLegend = document.getElementById('nukaLegend');
         const legendOverlay = document.getElementById('legendOverlay');
@@ -798,7 +788,6 @@
         legendOverlay.addEventListener('click', () => {
             nukaLegend.classList.remove('active'); legendOverlay.classList.remove('active'); document.body.style.overflow = '';
         });
-        // ===========================================================
 
         const radioBtn = document.getElementById('btn-radio');
         let radioActive = false;
