@@ -243,7 +243,7 @@
         .phone-block .en { font-size: 10px; }
 
         /* ==================================================
-           NUKA AVATAR (Changed from Robot to Female Glyph)
+           NUKA AVATAR (Modern Female AI Silhouette)
            ================================================== */
         .avatar-nuka {
             display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; cursor: pointer; transition: 0.3s ease; user-select: none;
@@ -257,12 +257,15 @@
         }
         .avatar-nuka:hover .nuka-silhouette { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 60px rgba(0,212,255,0.12), inset 0 0 60px rgba(0,212,255,0.05); }
 
-        /* Ancient Egyptian feminine hieroglyph 𓁐 representing Nuka, the AI guide */
+        /* Stylized female AI face (modern, elegant) */
         .nuka-face { 
-            font-size: 72px; line-height: 1; color: var(--blue); opacity: 0.8; 
+            font-size: 64px; line-height: 1; color: var(--blue); opacity: 0.9; 
             filter: drop-shadow(0 0 20px rgba(0,212,255,0.15)); transition: 0.4s ease; 
             font-family: 'Space Grotesk', sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            height: 80px; width: 80px;
         }
+        .nuka-face i { font-size: 64px; }
         .avatar-nuka:hover .nuka-face { opacity: 1; filter: drop-shadow(0 0 30px rgba(0,212,255,0.25)); }
 
         .nuka-glow { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle, rgba(0,212,255,0.2), transparent 70%); filter: blur(8px); animation: glowPulse 3s ease-in-out infinite; }
@@ -397,7 +400,8 @@
             .seal-card .seal-icon { font-size: 20px; }
             .bottom-row { grid-template-columns: 1fr; gap: 10px; }
             .nuka-silhouette { width: 80px; height: 80px; }
-            .nuka-face { font-size: 54px; }
+            .nuka-face { font-size: 44px; }
+            .nuka-face i { font-size: 44px; }
             .nuka-legend { max-width: 280px; padding: 22px 18px; }
             .control-panel { top: 10px; left: 10px; padding: 4px 5px; flex-wrap: wrap; gap: 3px; border-radius: 30px; max-width: calc(100% - 80px); }
             .control-btn { width: 30px; height: 30px; font-size: 11px; }
@@ -417,7 +421,8 @@
             .video-backdrop { min-height: 200px; margin-top: 40px; }
             .seal-card .seal-icon { font-size: 18px; }
             .nuka-silhouette { width: 64px; height: 64px; }
-            .nuka-face { font-size: 42px; }
+            .nuka-face { font-size: 36px; }
+            .nuka-face i { font-size: 36px; }
             .control-panel { top: 8px; left: 8px; padding: 3px 4px; gap: 2px; border-radius: 24px; max-width: calc(100% - 70px); }
             .control-btn { width: 26px; height: 26px; font-size: 10px; }
             .control-btn.lang-btn { font-size: 7px; padding: 0 4px; height: 20px; }
@@ -540,7 +545,7 @@
                     <!-- ================= UPDATED NUKA AVATAR ================= -->
                     <div class="avatar-nuka" id="nukaAvatar">
                         <div class="nuka-silhouette">
-                            <div class="nuka-face">𓁐</div>
+                            <div class="nuka-face"><i class="fas fa-user-circle"></i></div>
                             <div class="nuka-glow"></div>
                         </div>
                         <div class="nuka-title">
@@ -694,7 +699,7 @@
     <!-- ================= UPDATED NUKA LEGEND ================= -->
     <div class="nuka-legend" id="nukaLegend">
         <button class="legend-close" id="legendClose"><i class="fas fa-times"></i></button>
-        <div class="legend-icon">𓁐</div>
+        <div class="legend-icon"><i class="fas fa-user-circle"></i></div>
         <div class="legend-title">Nuka<span class="en"> · Tersanesi Assistant</span></div>
         <div class="legend-text">
             <span class="ar">
