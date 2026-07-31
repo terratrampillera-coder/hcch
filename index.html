@@ -517,9 +517,13 @@
     </div>
 
     <div class="video-backdrop" id="videoBackdrop">
-        <video id="mainVideo" controls playsinline preload="metadata">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        
+        <!-- ============== MAIN VIDEO (Autoplay, Muted, Loop) ============== -->
+        <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
+            <source src="https://sunreef-yachts.com/wp-content/uploads/2023/06/Sunreef-100-Sail-The-Avant-Garde.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает видео.
         </video>
+        
         <div class="video-overlay-dark"></div>
 
         <div class="video-content">
@@ -654,9 +658,12 @@
             </div>
         </div>
         <div class="bottom-block" style="padding:0;overflow:hidden;border-radius:14px;">
-            <video id="secondaryVideo" controls playsinline preload="metadata" style="width:100%;display:block;background:#0a0805;aspect-ratio:16/9;object-fit:cover;">
-                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+            
+            <!-- ============== SECONDARY VIDEO (Autoplay, Muted, Loop) ============== -->
+            <video id="secondaryVideo" autoplay muted loop playsinline preload="metadata" style="width:100%;display:block;background:#0a0805;aspect-ratio:16/9;object-fit:cover;">
+                <source src="https://www.youtube.com/watch?v=szbn0cbrV4k" type="video/mp4" />
             </video>
+            
             <div style="padding:8px 12px 10px;background:var(--bg-parchment);text-align:center;">
                 <div class="en" style="font-size:9px;color:var(--text-muted);">Cinematic Drone Fly-through</div>
             </div>
@@ -759,6 +766,8 @@
 
         const video1 = document.getElementById('mainVideo');
         const video2 = document.getElementById('secondaryVideo');
+        
+        // Asynchronous video logic (pausing the other when one is played manually)
         video1.addEventListener('play', () => { if (!video2.paused) video2.pause(); });
         video2.addEventListener('play', () => { if (!video1.paused) video1.pause(); });
 
